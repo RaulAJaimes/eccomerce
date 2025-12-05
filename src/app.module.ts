@@ -1,20 +1,20 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { ProductModule } from './infrastructure/product.module';
 
 @Module({
   imports: [
-    // Configuración global de variables de entorno
+    // Configuración global
     ConfigModule.forRoot({
-      isGlobal: true,      // Disponible en TODA la aplicación
-      envFilePath: '.env', // Archivo donde buscar variables
-      cache: true,         // Cache para mejor performance
+      isGlobal: true,
+      envFilePath: '.env',
+      cache: true,
     }),
+    
+    // Módulos de nuestra aplicación
+    ProductModule,
   ],
-  controllers: [
-    // Los controllers se agregarán en módulos específicos
-  ],
-  providers: [
-    // Los providers se agregarán en módulos específicos
-  ],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
